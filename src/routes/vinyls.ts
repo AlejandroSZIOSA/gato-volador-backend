@@ -23,7 +23,7 @@ router.post("/vinyl", (req, res, next) => {
   const body = req.body as RequestBody; //19
   const newVinyl: Vinyl = {
     id: new Date().toISOString(),
-    artist: req.body.artist, //15
+    artist: body.artist, //15
   };
   vinyls.push(newVinyl); //16
   res.status(201).json({ message: "Vinyl added successfully", vinyls: vinyls });
@@ -32,7 +32,7 @@ router.post("/vinyl", (req, res, next) => {
 //17 put method
 /* router.put("/vinyl/:vinylId", (req, res, next) => {
   const tid = req.params.vinylId;
-  const body= req.body as RequestBody; //19
+  const body = req.body as RequestBody; //19
   const vinylIndex = vinyls.findIndex((vinylItem) => vinylItem.id === tid);
   if (vinylIndex >= 0) {
     vinyls[vinylIndex] = { id: vinyls[vinylIndex].id, artist: body.artist };
